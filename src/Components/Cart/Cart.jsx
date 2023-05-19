@@ -1,4 +1,5 @@
 import React from 'react';
+import './Cart.css'
 
 const Cart = ({cart, handleRemoveFromCart}) => {
     let message;
@@ -13,14 +14,21 @@ const Cart = ({cart, handleRemoveFromCart}) => {
     }
     return (
         <div>
-            <h3>order summary: {cart.length}</h3>
-            {cart.length > 2 ? <span>Aro kino</span> : <span>fakir</span>}
+            <h3 className={cart.length === 1 ? 'blue' : 'red'}>order summary: {cart.length}</h3>
+            <p className={`bold bordered ${cart.length === 3 ? 'yellow' : 'purple'}`}>something</p>
+            {cart.length > 2 ? <span className='purple'>Aro kino</span> : <span>fakir</span>}
             {message}
             {
                 cart.map(tshirt => <p 
                 key={tshirt._id}
                 >{tshirt.name} <button onClick={() => handleRemoveFromCart(tshirt._id)}>X</button>
                 </p>)
+            }
+            {
+                cart.length === 2 && <p>Double bonus</p>
+            }
+            {
+                cart.length === 3 || <h3>Tinta hoy nay</h3>
             }
         </div>
     );
@@ -32,4 +40,12 @@ export default Cart;
  * CONDITIONAL RENDERING
  * 1. Use if else to set a variable that will contain an element, components
  * 2. ternary operator: condition ? 'for true' : 'false'
+ * 3. Logical &&:(if the condition is true then the next thing will be displayed)
+ * 4. Logical ||: (if the condition is false then the next thing will be displayed)
+*/
+
+/**
+ * CONDITIONAL CSS class
+ * 1. use ternary
+ * 2. ternary inside template string
 */
